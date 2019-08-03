@@ -27,10 +27,10 @@ registerBlockType('namespace/person', {
         ]
     },
 
-    edit: ( properties ) => {
+    edit: properties => {
 
-        let OPTIONS = <p>here: edit the block</p>
-        let PREVIEW = <ServerSideRender block="namespace/person" attributes={ properties.attributes }/>
+        let OPTIONS = <p>here: edit the block</p>;
+        let PREVIEW = <ServerSideRender block="namespace/person" attributes={ properties.attributes }/>;
 
         return ( properties.isSelected ) ? OPTIONS : PREVIEW;
 
