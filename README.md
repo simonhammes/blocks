@@ -9,10 +9,12 @@ webpack --watch
 ### Shortcodes
 
 #### person 
-| Name | Default |
-| ---- | ------- |
-| ID   | ''      |
-| flag | ''      |
+| Shortcode | Attribute name | Default value | Attribute type |
+| --------- | -------------- | ------------- | -------------- |
+| person    | id             | ''            | named          |
+| person    | flag           | ''            | numeric        |
+
+### Blocks
 
 * ID 
   * default: ''
