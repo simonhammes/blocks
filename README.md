@@ -5,13 +5,15 @@ npm install
 webpack --watch
 ```
 
-### Shortcode (person) attributes
+### Shortcodes
+#### person 
 * ID 
   * default: ''
 * flag
   * default: ''
 
-### Block (namespace/person) attributes
+### Blocks
+#### namespace/person
 * ID 
   * default: ''
   * type: string
