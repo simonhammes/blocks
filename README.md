@@ -16,7 +16,7 @@ webpack --watch
 ### Blocks
 
 | Block            | Attribute name | Default value | Data type |
-| ---------------- | -------------- | ------------- | --------- |
+| :--------------- | -------------- | ------------- | --------- |
 | namespace/person | id             | ''            | string    |
 | namespace/person | flag           | ''            | string    |
 
