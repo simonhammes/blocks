@@ -2,7 +2,7 @@ const { registerBlockType } = wp.blocks;
 const { ServerSideRender } = wp.components;
 const { InnerBlocks } = wp.editor;
 
-registerBlockType('namespace/person', {
+registerBlockType( 'namespace/person', {
 
     title: 'person',
     icon: 'edit',
