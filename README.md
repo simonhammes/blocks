@@ -1,4 +1,5 @@
 # Getting started 
+
 ### Installing
 ```
 npm install    
@@ -6,7 +7,13 @@ webpack --watch
 ```
 
 ### Shortcodes
+
 #### person 
+| Name | Default |
+| ---- | ------- |
+| ID   | ''      |
+| flag | ''      |
+
 * ID 
   * default: ''
 * flag
