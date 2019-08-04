@@ -8,7 +8,6 @@ webpack --watch
 
 ### Shortcodes
 
-#### person 
 | Shortcode | Attribute name | Default value | Attribute type |
 | --------- | -------------- | ------------- | -------------- |
 | person    | id             | ''            | named          |
@@ -16,18 +15,9 @@ webpack --watch
 
 ### Blocks
 
-* ID 
-  * default: ''
-* flag
-  * default: ''
+| Block            | Attribute name | Default value | Data type |
+| ---------------- | -------------- | ------------- | --------- |
+| namespace/person | id             | ''            | string    |
+| namespace/person | flag           | ''            | string    |
 
-### Blocks
-#### namespace/person
-* ID 
-  * default: ''
-  * type: string
-* flag
-  * default: ''
-  * type: string
-  
   
