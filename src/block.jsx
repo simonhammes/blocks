@@ -2,7 +2,7 @@ const { registerBlockType } = wp.blocks;
 const { ServerSideRender } = wp.components;
 const { InnerBlocks } = wp.editor;
 
-registerBlockType( 'dev/person', {
+registerBlockType( 'wp-gb-plugin-template/person', {
 
     title: 'person',
     icon: 'admin-users',
@@ -29,7 +29,7 @@ registerBlockType( 'dev/person', {
     edit: props => {
 
         let OPTIONS = <p>here: edit the block</p>;
-        let PREVIEW = <ServerSideRender block="dev/person" attributes={ props.attributes }/>;
+        let PREVIEW = <ServerSideRender block="wp-gb-plugin-template/person" attributes={ props.attributes }/>;
 
         return ( props.isSelected ) ? OPTIONS : PREVIEW;
 

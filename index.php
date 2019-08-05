@@ -19,7 +19,7 @@ function register_block() {
 		['wp-blocks', 'wp-editor', 'wp-element', 'wp-components', 'wp-compose', 'wp-date']
 	);
 
-	register_block_type('dev/person', [
+	register_block_type('wp-gb-plugin-template/person', [
 		'attributes' => [
 			'id' => [
 				'type' => 'string',
