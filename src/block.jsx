@@ -2,12 +2,11 @@ const { registerBlockType } = wp.blocks;
 const { ServerSideRender } = wp.components;
 const { InnerBlocks } = wp.editor;
 
-registerBlockType( 'namespace/person', {
+registerBlockType( 'dev/person', {
 
     title: 'person',
-    icon: 'edit',
+    icon: 'admin-users',
     category: 'common',
-    keywords: ['person'],
     transforms: {
         from: [
             {
@@ -16,23 +15,23 @@ registerBlockType( 'namespace/person', {
                 attributes: {
                     id: {
                         type: 'string',
-                        shortcode: ( attributes ) => attributes.named.id
+                        shortcode: attributes => attributes.named.id
                     },
                     flag: {
                         type: 'string',
-                        shortcode: ( attributes ) => attributes.numeric[0]
+                        shortcode: attributes => attributes.numeric[0]
                     }
                 }
             },
         ]
     },
 
-    edit: properties => {
+    edit: props => {
 
         let OPTIONS = <p>here: edit the block</p>;
-        let PREVIEW = <ServerSideRender block="namespace/person" attributes={ properties.attributes }/>;
+        let PREVIEW = <ServerSideRender block="dev/person" attributes={ props.attributes }/>;
 
-        return ( properties.isSelected ) ? OPTIONS : PREVIEW;
+        return ( props.isSelected ) ? OPTIONS : PREVIEW;
 
     },
 
