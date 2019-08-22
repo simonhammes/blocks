@@ -1,7 +1,6 @@
 const { InnerBlocks } = wp.blockEditor;
 const { registerBlockType } = wp.blocks;
-const { Button, RangeControl, ServerSideRender } = wp.components;
-const { MediaUpload, MediaUploadCheck } = wp.editor;
+const { RangeControl, ServerSideRender } = wp.components;
 // Gutenberg 6.3: const ServerSideRender = wp.serverSideRender;
 
 registerBlockType('dev/rangecontrol', {

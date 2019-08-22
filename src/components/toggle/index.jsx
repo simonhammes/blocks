@@ -1,6 +1,6 @@
 const { InnerBlocks, InspectorControls, RichText } = wp.blockEditor;
 const { registerBlockType } = wp.blocks;
-const { SelectControl, ServerSideRender, TextControl, ToggleControl, PanelBody } = wp.components;
+const { ServerSideRender, ToggleControl, PanelBody } = wp.components;
 // Gutenberg 6.3: const ServerSideRender = wp.serverSideRender;
 
 registerBlockType('dev/toggle', {

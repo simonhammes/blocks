@@ -1,7 +1,6 @@
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, MediaUpload, MediaUploadCheck } = wp.blockEditor;
 const { registerBlockType } = wp.blocks;
 const { Button, ServerSideRender } = wp.components;
-const { MediaUpload, MediaUploadCheck } = wp.editor;
 // Gutenberg 6.3: const ServerSideRender = wp.serverSideRender;
 
 registerBlockType('dev/mediaupload', {
@@ -33,8 +32,6 @@ registerBlockType('dev/mediaupload', {
                 </div>
             ) }
         </div>
-
-
 
         let OPTIONS = [ MEDIA_UPLOAD ];
         let PREVIEW = <ServerSideRender block="dev/mediaupload" attributes={ props.attributes }/>;
