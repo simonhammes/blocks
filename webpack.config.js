@@ -1,9 +1,9 @@
 module.exports = {
     mode: 'development',
-    entry: './src/block.jsx',
+    entry: './src/index.jsx',
     output: {
         path: __dirname + '/build/',
-        filename: 'app.js'
+        filename: 'index.js'
     },
     module: {
         rules: [
