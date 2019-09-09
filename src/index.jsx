@@ -1,5 +1,5 @@
-require('./components/autocomplete/index.jsx');
-require('./components/datepicker/index.jsx');
-require('./components/mediaupload/index.jsx');
-require('./components/rangecontrol/index.jsx');
-require('./components/toggle/index.jsx');
+require('./blocks/core/index.jsx');
+
+require('./blocks/autocomplete/index.jsx');
+
+require('./blocks/mediaupload/index.jsx');

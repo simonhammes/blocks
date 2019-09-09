@@ -13,7 +13,7 @@ function register_autocomplete_block() {
                 'default' => ''
             ]
         ],
-        'editor_script'   => 'block_editor_script',
+        'editor_script'   => 'blocks_js',
         'render_callback' => 'render_autocomplete_block'
     ] );
 

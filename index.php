@@ -2,27 +2,37 @@
 
 // Plugin Name: wp-gb-plugin-template
 
-require 'src/components/autocomplete/index.php';
-require 'src/components/datepicker/index.php';
-require 'src/components/mediaupload/index.php';
-require 'src/components/rangecontrol/index.php';
-require 'src/components/toggle/index.php';
+require 'src/blocks/core/index.php';
 
-// Register the main .js file for all components
-function register_script() {
+require 'src/blocks/autocomplete/index.php';
+require 'src/blocks/mediaupload/index.php';
+
+function register_assets() {
 
     wp_register_script(
-        'block_editor_script',
+        'blocks_js',
         plugins_url('build/index.js', __FILE__ ),
         ['wp-blocks', 'wp-editor', 'wp-element', 'wp-components', 'wp-compose', 'wp-date']
     );
 
     wp_register_style(
-        'block_editor_styles_1',
-        plugins_url('wp-gb-plugin-template/src/css/accessible-autocomplete.min.css')
+        'autocomplete_block_css',
+        plugins_url('src/blocks/autocomplete/accessible-autocomplete.min.css', __FILE__)
     );
-    wp_enqueue_style('block_editor_styles_1');
+    wp_enqueue_style('autocomplete_block_css');
 
 }
+add_action('init', 'register_assets');
 
-add_action('init', 'register_script');
+function add_custom_block_category( $categories, $post ) {
+    return array_merge(
+        array(
+            array(
+                'slug' => 'blocks-by-simon-hammes',
+                'title' => 'Blocks by Simon Hammes',
+            ),
+        ),
+        $categories
+    );
+}
+add_filter( 'block_categories', 'add_custom_block_category', 10, 2);

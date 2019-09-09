@@ -13,7 +13,7 @@ function register_mediaupload_block() {
                 'default' => ''
             ]
         ],
-        'editor_script'   => 'block_editor_script',
+        'editor_script'   => 'blocks_js',
         'render_callback' => 'render_mediaupload_block'
     ] );
 
