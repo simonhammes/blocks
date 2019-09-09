@@ -5,7 +5,6 @@
 require 'src/blocks/core/index.php';
 
 require 'src/blocks/autocomplete/index.php';
-require 'src/blocks/mediaupload/index.php';
 
 function register_assets() {
 

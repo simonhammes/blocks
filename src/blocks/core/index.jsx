@@ -1,6 +1,6 @@
-const { InnerBlocks, RichText } = wp.blockEditor;
+const { InnerBlocks, MediaUpload, MediaUploadCheck, RichText } = wp.blockEditor;
 const { registerBlockType } = wp.blocks;
-const { DatePicker, RangeControl, TextControl, ToggleControl } = wp.components;
+const { Button, DatePicker, RangeControl, TextControl, ToggleControl } = wp.components;
 const { withState } = wp.compose;
 const ServerSideRender = wp.serverSideRender;
 
@@ -20,7 +20,7 @@ registerBlockType('dev/core', {
             />
             <TextControl
                 label="Datum"
-                value={ props.attributes.displayDate }
+                value={ props.attributes.display_date }
                 autocomplete="off"
                 readOnly
                 style={ { backgroundColor: '#FFFFFF', cursor: 'pointer' } }
@@ -30,14 +30,14 @@ registerBlockType('dev/core', {
                 <DatePicker
                     currentDate={ props.attributes.date }
                     onChange={ date => {
-                        let displayDate = new Date(date).toLocaleDateString('de-DE', {
+                        let display_date = new Date(date).toLocaleDateString('de-DE', {
                             day: 'numeric',
                             month: 'long',
                             year: 'numeric'
                         } );
                         return props.setAttributes( {
                             date: date,
-                            displayDate: displayDate
+                            display_date: display_date
                         } );
                     } }
 
@@ -60,13 +60,35 @@ registerBlockType('dev/core', {
             <h4>ToggleControl</h4>
             <ToggleControl
                 label="Display authors"
-                checked={ props.attributes.isToggled }
-                help={ props.attributes.isToggled ? 'Authors will be displayed' : 'Authors will not be displayed' }
-                onChange={ () => props.setAttributes( { isToggled: ! props.attributes.isToggled } ) }
+                checked={ props.attributes.is_toggled }
+                help={ props.attributes.is_toggled ? 'Authors will be displayed' : 'Authors will not be displayed' }
+                onChange={ () => props.setAttributes( { is_toggled: ! props.attributes.is_toggled } ) }
             />
         </div>;
+        const MEDIA_UPLOAD = <div>
+            <h4>MediaUpload</h4>
+            { ! props.attributes.image_url && (
+                <MediaUploadCheck>
+                    <MediaUpload
+                        allowedTypes={ ['image'] }
+                        onSelect={ img => props.setAttributes( { image_url: img.url } ) }
+                        render={ ( { open } ) =>
+                            <Button isPrimary onClick={ open }>Add an image</Button>
+                        }
+                    />
+                </MediaUploadCheck>
+            ) }
 
-        let OPTIONS = [ DATE_PICKER, RANGE_CONTROL, TOGGLE_CONTROL ];
+            { props.attributes.image_url && (
+                <div>
+                    <img style={ { maxHeight: '150px' } }  src={ props.attributes.image_url }/>
+                    <br/><br/>
+                    <Button isDefault onClick={ () => props.setAttributes( { image_url: '' } ) }>Reset image</Button>
+                </div>
+            ) }
+        </div>
+
+        let OPTIONS = [ DATE_PICKER, RANGE_CONTROL, TOGGLE_CONTROL, MEDIA_UPLOAD ];
         let PREVIEW = <ServerSideRender block="dev/core" attributes={ props.attributes }/>;
 
         return props.isSelected ? OPTIONS : PREVIEW;
