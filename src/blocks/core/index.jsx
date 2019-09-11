@@ -1,41 +1,8 @@
 const { InnerBlocks, MediaUpload, MediaUploadCheck, RichText } = wp.blockEditor;
 const { registerBlockType } = wp.blocks;
 const { Button, DatePicker, RangeControl, TextControl, ToggleControl } = wp.components;
-const { compose, withState } = wp.compose;
-const { withSelect, withDispatch } = wp.data;
+const { withState } = wp.compose;
 const ServerSideRender = wp.serverSideRender;
-
-const MyComponentBase = ( { createNotice, blocks, className } ) => {
-
-    const triggerNotice = type => createNotice(type, 'This is a notice!');
-
-    return (
-        <div className={ className } style={ { paddingLeft: "20px" } }>
-            <p>List of notices</p>
-            <ul>
-                <li><a onClick={ () => triggerNotice('info') }>Trigger an info notice</a></li>
-                <li><a onClick={ () => triggerNotice('error') }>Trigger an error notice</a></li>
-                <li><a onClick={ () => triggerNotice('warning') }>Trigger a warning notice</a></li>
-                <li><a onClick={ () => triggerNotice('success') }>Trigger a success notice</a></li>
-            </ul>
-            <p>List of blocks on this page</p>
-            <ul>
-                { blocks.map( block => <li>{ block.name }</li> ) }
-            </ul>
-        </div>
-    );
-};
-
-const applyWithSelect = withSelect( select => {
-    const { getBlocks } = select('core/block-editor');
-    return { blocks: getBlocks() };
-});
-
-const applyWithDispatch = withDispatch( dispatch => {
-    return { createNotice } = dispatch('core/notices');
-});
-
-const MyComponent = compose( applyWithSelect, applyWithDispatch )( MyComponentBase );
 
 registerBlockType('dev/core', {
 
@@ -114,21 +81,39 @@ registerBlockType('dev/core', {
 
             { props.attributes.image_url && (
                 <div>
-                    <img style={ { maxHeight: '150px' } }  src={ props.attributes.image_url }/>
+                    <img style={ { maxHeight: '150px' } }  src={ props.attributes.image_url } alt="Another image"/>
                     <br/><br/>
                     <Button isDefault onClick={ () => props.setAttributes( { image_url: '' } ) }>Reset image</Button>
                 </div>
             ) }
         </div>;
+
+        const ListOfBlocks = () => {
+            const blocks = wp.data.select('core/block-editor').getBlocks();
+            return <ul style={ { paddingLeft: "20px" } }>{ blocks.map( block => <li>{ block.name }</li> ) }</ul>;
+        };
+        const ListOfNotices = () => {
+            const triggerNotice = type => {
+                return wp.data.dispatch('core/notices').createNotice(type, 'Triggered notice with type ' + type);
+            };
+            return <ul style={ { paddingLeft: "20px" } }>
+                <li><a onClick={ () => triggerNotice('info') }>Trigger an info notice</a></li>
+                <li><a onClick={ () => triggerNotice('error') }>Trigger an error notice</a></li>
+                <li><a onClick={ () => triggerNotice('warning') }>Trigger a warning notice</a></li>
+                <li><a onClick={ () => triggerNotice('success') }>Trigger a success notice</a></li>
+            </ul>;
+        };
         const WP_DATA_EXAMPLES = <div>
-            <h4>Using wp.data</h4>
-            <MyComponent { ...props }/>
+            <h4>List of blocks on this page</h4>
+            <ListOfBlocks/>
+            <h4>List of notices</h4>
+            <ListOfNotices/>
         </div>;
 
-        let OPTIONS = [ DATE_PICKER, RANGE_CONTROL, TOGGLE_CONTROL, MEDIA_UPLOAD, WP_DATA_EXAMPLES ];
+        let BLOCKS = [ DATE_PICKER, RANGE_CONTROL, TOGGLE_CONTROL, MEDIA_UPLOAD, WP_DATA_EXAMPLES ];
         let PREVIEW = <ServerSideRender block="dev/core" attributes={ props.attributes }/>;
 
-        return props.isSelected ? OPTIONS : PREVIEW;
+        return props.isSelected ? BLOCKS : PREVIEW;
 
     } ),
 
