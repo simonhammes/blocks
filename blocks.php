@@ -1,6 +1,9 @@
 <?php
 
-// Plugin Name: wp-gb-plugin-template
+// Plugin Name: Blocks
+// Author: Simon Hammes
+
+
 
 require 'src/blocks/core/index.php';
 
@@ -23,7 +26,7 @@ function register_assets() {
 }
 add_action('init', 'register_assets');
 
-function add_custom_block_category( $categories, $post ) {
+function add_custom_block_category($categories, $post) {
     return array_merge(
         array(
             array(
@@ -34,4 +37,10 @@ function add_custom_block_category( $categories, $post ) {
         $categories
     );
 }
-add_filter( 'block_categories', 'add_custom_block_category', 10, 2);
+add_filter('block_categories', 'add_custom_block_category', 10, 2);
+
+function remove_update_notification($value) {
+    unset($value->response['blocks/blocks.php']);
+    return $value;
+}
+add_filter('site_transient_update_plugins', 'remove_update_notification');
