@@ -11,7 +11,7 @@ function register_assets() {
     wp_register_script(
         'blocks_js',
         plugins_url('build/index.js', __FILE__ ),
-        ['wp-blocks', 'wp-editor', 'wp-element', 'wp-components', 'wp-compose', 'wp-date']
+        ['wp-blocks', 'wp-editor', 'wp-element', 'wp-components', 'wp-compose', 'wp-date', 'wp-data']
     );
 
     wp_register_style(

@@ -302,9 +302,9 @@ registerBlockType('dev/autocomplete', {
         render() {
 
             return <div ref={ this.outerDiv }>
-                <h4>Autocomplete</h4>
+                <h4>Autocomplete (using alphagov/accessible-autocomplete)</h4>
                 <BaseControl id="my-autocomplete" label="Select your country">
-                    <div id="my-autocomplete-container"></div>
+                    <div id="my-autocomplete-container"/>
                 </BaseControl>
             </div>;
 
