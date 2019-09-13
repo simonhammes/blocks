@@ -85,6 +85,9 @@ function register_template_for_pages() {
             ]
         ]
     ];
+
+    $page->template_lock = 'all'; // Prevent inserting, moving and deleting
+    $page->template_lock = 'insert'; // Prevent inserting and deleting, allow moving
 }
 add_action('init', 'register_template_for_pages');
 
