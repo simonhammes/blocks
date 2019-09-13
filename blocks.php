@@ -4,12 +4,11 @@
 // Author: Simon Hammes
 
 
-
 require 'src/blocks/core/index.php';
-
 require 'src/blocks/autocomplete/index.php';
 
-function register_assets() {
+
+function register_block_assets() {
 
     wp_register_script(
         'blocks_js',
@@ -24,7 +23,7 @@ function register_assets() {
     wp_enqueue_style('autocomplete_block_css');
 
 }
-add_action('init', 'register_assets');
+add_action('init', 'register_block_assets');
 
 function add_custom_block_category($categories, $post) {
     return array_merge(
@@ -39,8 +38,53 @@ function add_custom_block_category($categories, $post) {
 }
 add_filter('block_categories', 'add_custom_block_category', 10, 2);
 
-function remove_update_notification($value) {
+function remove_update_notifications($value) {
     unset($value->response['blocks/blocks.php']);
     return $value;
 }
-add_filter('site_transient_update_plugins', 'remove_update_notification');
+add_filter('site_transient_update_plugins', 'remove_update_notifications');
+
+function register_template_for_pages() {
+    $page = get_post_type_object('page');
+    $page->template = [
+        [
+            'core/columns', [],
+            [
+                [
+                    'core/column', [ 'width' => 70 ],
+                    [
+                        [
+                            'core/cover', [ 'overlayColor' => 'light-gray' ],
+                            [
+                                [
+                                    'core/paragraph', [ 'content' => 'Inhalt', 'fontSize' => 'large' ]
+                                ]
+                            ]
+                        ],
+                        [
+                            'core/paragraph', [ 'content' => 'Hier folgt der Inhalt!' ]
+                        ]
+                    ]
+                ],
+                [
+                    'core/column', [],
+                    [
+                        [
+                            'core/cover', [ 'overlayColor' => 'primary' ],
+                            [
+                                [
+                                    'core/paragraph', [ 'content' => 'Sidebar', 'fontSize' => 'large' ]
+                                ]
+                            ]
+                        ],
+                        [
+                            'core/paragraph', [ 'content' => 'Das ist die rechte Spalte!' ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ];
+}
+add_action('init', 'register_template_for_pages');
+
