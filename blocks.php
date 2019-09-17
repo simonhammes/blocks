@@ -1,42 +1,15 @@
 <?php
 
 // Plugin Name: Blocks
-// Author: Simon Hammes
 
 
-require 'src/blocks/core/index.php';
-require 'src/blocks/autocomplete/index.php';
+define('BLOCKS_PLUGIN_DIR', '/wp-content/plugins/blocks');
+
+require 'src/php/register_assets.php';
+require 'src/php/register_block_category.php';
+require 'src/php/register_blocks.php';
 
 
-function register_block_assets() {
-
-    wp_register_script(
-        'blocks_js',
-        plugins_url('build/index.js', __FILE__ ),
-        ['wp-blocks', 'wp-editor', 'wp-element', 'wp-components', 'wp-compose', 'wp-date', 'wp-data']
-    );
-
-    wp_register_style(
-        'autocomplete_block_css',
-        plugins_url('src/blocks/autocomplete/accessible-autocomplete.min.css', __FILE__)
-    );
-    wp_enqueue_style('autocomplete_block_css');
-
-}
-add_action('init', 'register_block_assets');
-
-function add_custom_block_category($categories, $post) {
-    return array_merge(
-        array(
-            array(
-                'slug' => 'blocks-by-simon-hammes',
-                'title' => 'Blocks by Simon Hammes',
-            ),
-        ),
-        $categories
-    );
-}
-add_filter('block_categories', 'add_custom_block_category', 10, 2);
 
 function remove_update_notifications($value) {
     unset($value->response['blocks/blocks.php']);
@@ -89,5 +62,5 @@ function register_template_for_pages() {
     $page->template_lock = 'all'; // Prevent inserting, moving and deleting
     $page->template_lock = 'insert'; // Prevent inserting and deleting, allow moving
 }
-add_action('init', 'register_template_for_pages');
+//add_action('init', 'register_template_for_pages');
 

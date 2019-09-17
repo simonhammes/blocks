@@ -1,6 +1,6 @@
 module.exports = {
     mode: 'development',
-    entry: './src/index.jsx',
+    entry: './src/js/index.js',
     output: {
         path: __dirname + '/build/',
         filename: 'index.js'
@@ -17,7 +17,8 @@ module.exports = {
         ]
     },
     externals: {
-        react: 'react'
+        react: 'React',
+        'react-dom': 'ReactDOM'
     }
 };
 
