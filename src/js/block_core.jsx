@@ -10,68 +10,60 @@ registerBlockType('dev/core', {
     icon: 'admin-users',
     category: 'blocks-by-simon-hammes',
 
-    edit: withState( { isDatePickerVisible: false } )( props => {
+    edit: withState( { is_datepicker_visible: false } )( props => {
 
+        let formatted_date = new Date(props.attributes.datepicker).toLocaleDateString('de-DE', {
+            day: 'numeric', month: 'long', year: 'numeric'
+        } );
         const DATE_PICKER = <div>
             <h4>DatePicker</h4>
             <RichText
-                value={ props.attributes.date }
+                value={ props.attributes.datepicker }
                 style={ { display: 'none'} }
             />
             <TextControl
                 label="Datum"
-                value={ props.attributes.display_date }
-                autocomplete="off"
+                value={ formatted_date }
+                class="datepicker_formatted_date"
                 readOnly
-                style={ { backgroundColor: '#FFFFFF', cursor: 'pointer' } }
-                onClick={ () => props.setState( { isDatePickerVisible: ! props.isDatePickerVisible } ) }
+                onClick={ () => props.setState( { is_datepicker_visible: ! props.is_datepicker_visible } ) }
             />
-            { props.isDatePickerVisible && (
+            { props.is_datepicker_visible && (
                 <DatePicker
-                    currentDate={ props.attributes.date }
-                    onChange={ date => {
-                        let display_date = new Date(date).toLocaleDateString('de-DE', {
-                            day: 'numeric',
-                            month: 'long',
-                            year: 'numeric'
-                        } );
-                        return props.setAttributes( {
-                            date: date,
-                            display_date: display_date
-                        } );
-                    } }
-
+                    currentDate={ props.attributes.datepicker }
+                    onChange={ date => props.setAttributes( { datepicker: date } ) }
                     // Example: Disable mondays
                     // isInvalidDate={ date => date.getDay() === 1}
                 />
             ) }
         </div>;
+
         const RANGE_CONTROL = <div>
             <h4>RangeControl</h4>
             <RangeControl
                 label="Columns"
-                value={ props.attributes.number_of_columns }
+                value={ props.attributes.range_control }
                 min={ 2 }
                 max={ 8 }
-                onChange={ columns => props.setAttributes( { number_of_columns: columns } ) }
+                onChange={ value => props.setAttributes( { range_control: value } ) }
             />
         </div>;
         const TOGGLE_CONTROL = <div>
             <h4>ToggleControl</h4>
             <ToggleControl
                 label="Display authors"
-                checked={ props.attributes.is_toggled }
-                help={ props.attributes.is_toggled ? 'Authors will be displayed' : 'Authors will not be displayed' }
-                onChange={ () => props.setAttributes( { is_toggled: ! props.attributes.is_toggled } ) }
+                checked={ props.attributes.toggle_control }
+                help={ props.attributes.toggle_control ? 'Authors will be displayed' : 'Authors will not be displayed' }
+                onChange={ () => props.setAttributes( { toggle_control: ! props.attributes.toggle_control } ) }
             />
         </div>;
         const MEDIA_UPLOAD = <div>
             <h4>MediaUpload</h4>
-            { ! props.attributes.image_url && (
+            { ! props.attributes.media_upload && (
                 <MediaUploadCheck>
                     <MediaUpload
                         allowedTypes={ ['image'] }
-                        onSelect={ img => props.setAttributes( { image_url: img.url } ) }
+                        onSelect={ img => props.setAttributes( { media_upload: img.url } ) }
                         render={ ( { open } ) =>
                             <Button isPrimary onClick={ open }>Add an image</Button>
                         }
@@ -79,24 +71,24 @@ registerBlockType('dev/core', {
                 </MediaUploadCheck>
             ) }
 
-            { props.attributes.image_url && (
+            { props.attributes.media_upload && (
                 <div>
-                    <img style={ { maxHeight: '150px' } }  src={ props.attributes.image_url } alt="Another image"/>
+                    <img style={ { maxHeight: '150px' } }  src={ props.attributes.media_upload } alt="Another image"/>
                     <br/><br/>
-                    <Button isDefault onClick={ () => props.setAttributes( { image_url: '' } ) }>Reset image</Button>
+                    <Button isDefault onClick={ () => props.setAttributes( { media_upload: '' } ) }>Reset image</Button>
                 </div>
             ) }
         </div>;
 
         const ListOfBlocks = () => {
             const blocks = wp.data.select('core/block-editor').getBlocks();
-            return <ul style={ { paddingLeft: "20px" } }>{ blocks.map( block => <li>{ block.name }</li> ) }</ul>;
+            return <ul class="list_of_blocks">{ blocks.map( block => <li>{ block.name }</li> ) }</ul>;
         };
         const ListOfNotices = () => {
             const triggerNotice = type => {
                 return wp.data.dispatch('core/notices').createNotice(type, 'Triggered notice with type ' + type);
             };
-            return <ul style={ { paddingLeft: "20px" } }>
+            return <ul class="trigger_notice">
                 <li><a onClick={ () => triggerNotice('info') }>Trigger an info notice</a></li>
                 <li><a onClick={ () => triggerNotice('error') }>Trigger an error notice</a></li>
                 <li><a onClick={ () => triggerNotice('warning') }>Trigger a warning notice</a></li>

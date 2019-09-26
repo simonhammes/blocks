@@ -11,11 +11,10 @@ function register_core_block() {
 
     register_block_type( 'dev/core', [
         'attributes' => [
-            'date' => [ 'type' => 'string', 'default' => '' ],
-            'display_date' => [ 'type' => 'string', 'default' => '' ],
-            'number_of_columns' => [ 'type' => 'number', 'default' => 2 ],
-            'is_toggled' => [ 'type' => 'boolean', 'default' => False ],
-            'image_url' => [ 'type' => 'string', 'default' => '' ]
+            'datepicker' => [ 'type' => 'string', 'default' => '' ],
+            'range_control' => [ 'type' => 'number', 'default' => 2 ],
+            'toggle_control' => [ 'type' => 'boolean', 'default' => False ],
+            'media_upload' => [ 'type' => 'string', 'default' => '' ]
         ],
         'editor_script'   => 'blocks_js',
         'render_callback' => 'render_block_default'
