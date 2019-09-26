@@ -6,15 +6,15 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
-    "@wordpress/plugins": "^2.6.0",
+    "@wordpress/plugins": "^2.7.0",
     "accessible-autocomplete": "^1.6.2",
     "babel-loader": "^8.0.6",
-    "react-select": "^3.0.4",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.8"
+    "react-select": "^3.0.5",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   },
   "babel": {
     "presets": [

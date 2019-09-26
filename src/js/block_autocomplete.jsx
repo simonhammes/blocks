@@ -19,7 +19,7 @@ registerBlockType('dev/autocomplete', {
             super(...arguments);
             this.state = {
                 countries: [
-                    // TODO: Always add this as the first option
+                    // Always add this as the first option
                     { value: null, label: 'Start typing' },
                     { value: 'Afghanistan', label: 'Afghanistan'},
                     { value: 'Akrotiri', label: 'Akrotiri'},
