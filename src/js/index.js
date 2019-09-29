@@ -1,6 +1,6 @@
-require('./block_core.jsx');
+require('./blocks/core.jsx');
 
-require('./block_autocomplete.jsx');
+require('./blocks/autocomplete.jsx');
 
 require('./extend_sidebar.jsx');
 
