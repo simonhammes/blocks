@@ -12,9 +12,7 @@ registerBlockType('dev/core', {
 
     edit: withState( { is_datepicker_visible: false } )( props => {
 
-        let formatted_date = new Date(props.attributes.datepicker).toLocaleDateString('de-DE', {
-            day: 'numeric', month: 'long', year: 'numeric'
-        } );
+        let formatted_date = new Date(props.attributes.datepicker ? props.attributes.datepicker : new Date() ).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' } );
         const DATE_PICKER = <div>
             <h4>DatePicker</h4>
             <RichText
