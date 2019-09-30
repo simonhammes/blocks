@@ -55,3 +55,18 @@ function register_box_block() {
 
 }
 add_action('init', 'register_box_block');
+
+function register_person_block() {
+
+    register_block_type( 'dev/person', [
+        'attributes' => [
+            'id' => [ 'type' => 'number', 'default' => 0 ],
+            'name' => [ 'type' => 'string', 'default' => '' ]
+        ],
+        'editor_script'   => 'blocks_js',
+        'render_callback' => 'render_block_default'
+    ] );
+
+}
+add_action('init', 'register_person_block');
+
