@@ -42,3 +42,16 @@ function register_accessibleautocomplete_block() {
 
 }
 add_action( 'init', 'register_accessibleautocomplete_block' );
+
+function register_box_block() {
+
+    register_block_type( 'dev/box', [
+        'attributes' => [
+            'color' => [ 'type' => 'string' ]
+        ],
+        'editor_script'   => 'blocks_js',
+        'render_callback' => 'render_block_default'
+    ] );
+
+}
+add_action('init', 'register_box_block');
