@@ -5,17 +5,10 @@
 
 define('BLOCKS_PLUGIN_DIR', '/wp-content/plugins/blocks');
 
-require 'src/php/register_assets.php';
 require 'src/php/add_block_category.php';
+require 'src/php/hide_update_notification.php';
+require 'src/php/register_assets.php';
 require 'src/php/register_blocks.php';
-
-
-
-function remove_update_notifications($value) {
-    unset($value->response['blocks/blocks.php']);
-    return $value;
-}
-add_filter('site_transient_update_plugins', 'remove_update_notifications');
 
 function register_template_for_pages() {
     $page = get_post_type_object('page');
