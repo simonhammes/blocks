@@ -6,7 +6,7 @@
 define('BLOCKS_PLUGIN_DIR', '/wp-content/plugins/blocks');
 
 require 'src/php/register_assets.php';
-require 'src/php/register_block_category.php';
+require 'src/php/add_block_category.php';
 require 'src/php/register_blocks.php';
 
 
