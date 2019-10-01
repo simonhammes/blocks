@@ -1,5 +1,5 @@
 ### Installing
 ```
 npm install    
-webpack --watch
+webpack -w
 ```
