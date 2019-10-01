@@ -1,7 +1,7 @@
 <?php
 
 // Plugin Name: Blocks
-
+// Author: Simon Hammes
 
 define('BLOCKS_PLUGIN_DIR', '/wp-content/plugins/blocks');
 
