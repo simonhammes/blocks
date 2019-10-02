@@ -3,7 +3,7 @@ const { registerBlockType } = wp.blocks;
 const { TextControl } = wp.components;
 const ServerSideRender = wp.serverSideRender;
 
-registerBlockType( 'dev/person', {
+registerBlockType('dev/person', {
 
     title: 'Person',
     icon: 'admin-users',
@@ -35,11 +35,12 @@ registerBlockType( 'dev/person', {
     edit: props => {
 
         let OPTIONS = <div>
-            <h4>Person block</h4>
+            <h4>Person</h4>
             <TextControl
                 label="ID"
+                type="number"
                 value={ props.attributes.id }
-                onChange={ id => props.setAttributes( { id: id } ) }
+                onChange={ id => props.setAttributes( { id: parseInt(id) } ) }
             />
             <TextControl
                 label="Name"

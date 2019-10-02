@@ -1,8 +1,8 @@
 module.exports = {
     mode: 'development',
     entry: {
-        editor: './src/js/editor.js',
-        frontend: './src/js/frontend.js',
+        editor: './src/block_editor/index.js',
+        frontend: './src/frontend/index.js',
     },
     output: {
         path: __dirname + '/build/',
@@ -16,21 +16,6 @@ module.exports = {
                 use: {
                     loader: "babel-loader"
                 }
-            },
-            {
-                test: /\.scss$/,
-                exclude: /node_modules/,
-                use: [
-                    {
-                        loader: 'style-loader'
-                    },
-                    {
-                        loader: 'css-loader',
-                    },
-                    {
-                        loader: 'sass-loader'
-                    }
-                ]
             }
         ]
     },
@@ -41,4 +26,3 @@ module.exports = {
     },
     stats: 'minimal'
 };
-

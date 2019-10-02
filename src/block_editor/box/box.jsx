@@ -5,7 +5,8 @@ const { insertBlock } = wp.data.dispatch('core/block-editor');
 const { createNotice } = wp.data.dispatch('core/notices');
 const ServerSideRender = wp.serverSideRender;
 
-const ALLOWED_INNER_BLOCKS = ['wp-gb-nesting/column' ,'wp-gb-nesting/person', 'core/paragraph']; // TODO
+const ALLOWED_INNER_BLOCKS = ['dev/person', 'core/paragraph'];
+
 const SHORTCODES = ['person'];
 const is_shortcode = element => {
     let first_word = element.replace(/ .*/,'');
@@ -40,9 +41,9 @@ registerBlockType('dev/box', {
             <TextControl
                 label="Color"
                 value={props.attributes.color}
-                onChange={color => props.setAttributes({color: color})}
+                onChange={ color => props.setAttributes( { color: color } ) }
             />
-            <InnerBlocks allowedBlocks={ ALLOWED_INNER_BLOCKS}/>
+            <InnerBlocks allowedBlocks={ ALLOWED_INNER_BLOCKS }/>
         </div>;
 
     },
