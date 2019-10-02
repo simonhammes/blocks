@@ -2,13 +2,9 @@
 
 function register_assets() {
 
-    // JavaScript file for all blocks
-    wp_register_script(
-        'editor_js',
-        BLOCKS_PLUGIN_DIR . '/build/editor.js',
-        ['wp-blocks', 'wp-editor', 'wp-element', 'wp-components',
-            'wp-compose', 'wp-date', 'wp-data', 'wp-plugins', 'wp-edit-post']
-    );
+    $dependencies = ['wp-blocks', 'wp-editor', 'wp-element', 'wp-components', 'wp-compose', 'wp-date', 'wp-data', 'wp-plugins', 'wp-edit-post'];
+
+    wp_register_script('js_editor', BLOCKS_PLUGIN_DIR . '/build/editor.js', $dependencies);
 
     wp_register_script('select2_js', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js');
 
@@ -28,8 +24,8 @@ function register_assets() {
     wp_register_style('select2_css', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css');
     wp_enqueue_style('select2_css');
 
-    wp_register_style('accordion_css', BLOCKS_PLUGIN_DIR . '/src/css/accordion.css');
-    wp_enqueue_style('accordion_css');
+    wp_register_style('css_accordion', BLOCKS_PLUGIN_DIR . '/src/css/accordion.css');
+    wp_enqueue_style('css_accordion');
 
 }
 
