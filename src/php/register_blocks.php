@@ -1,10 +1,9 @@
 <?php
 
-function render_block_default( $attributes ) {
+function render_block_default($attributes) {
 
-    if(!isset($attributes['country_react_select'])) $attributes['country_react_select'] = 'null (this is a string)';
+    return '<pre>' . print_r($attributes, true) . '</pre>';
 
-    return '<pre>' . print_r( $attributes, true ) . '</pre>';
 }
 
 function register_core_block() {
@@ -16,17 +15,17 @@ function register_core_block() {
             'toggle_control' => [ 'type' => 'boolean', 'default' => False ],
             'media_upload' => [ 'type' => 'string', 'default' => '' ]
         ],
-        'editor_script'   => 'blocks_js',
+        'editor_script'   => 'editor_js',
         'render_callback' => 'render_block_default'
     ] );
 
 }
 add_action('init', 'register_core_block');
 
-function register_accessibleautocomplete_block() {
+function register_blocks() {
 
-    register_block_type( 'dev/autocomplete', [
-        'attributes'      => [
+    register_block_type('dev/autocomplete', [
+        'attributes' => [
             'country_accessible_autocomplete' => [
                 'type' => 'string',
                 'default' => ''
@@ -36,12 +35,28 @@ function register_accessibleautocomplete_block() {
                 'default' => NULL
             ]
         ],
-        'editor_script'   => 'blocks_js',
+        'editor_script' => 'editor_js',
         'render_callback' => 'render_block_default'
-    ] );
+    ]);
+
+    register_block_type('dev/accordion', [
+        'attributes' => [],
+        'editor_script' => 'editor_js',
+        'script' => 'frontend'
+        //'render_callback' => 'render_block_default'
+    ]);
+
+    register_block_type('dev/accordion-item', [
+        'attributes' => [
+            'title' => [ 'type' => 'string' ],
+            'initially_open' => [ 'type' => 'boolean', 'default' => FALSE ]
+        ],
+        'editor_script' => 'editor_js',
+        'render_callback' => 'render_accordion_item'
+    ]);
 
 }
-add_action( 'init', 'register_accessibleautocomplete_block' );
+add_action( 'init', 'register_blocks' );
 
 function register_box_block() {
 
@@ -49,7 +64,7 @@ function register_box_block() {
         'attributes' => [
             'color' => [ 'type' => 'string' ]
         ],
-        'editor_script'   => 'blocks_js',
+        'editor_script'   => 'editor_js',
         'render_callback' => 'render_block_default'
     ] );
 
@@ -63,10 +78,22 @@ function register_person_block() {
             'id' => [ 'type' => 'number', 'default' => 0 ],
             'name' => [ 'type' => 'string', 'default' => '' ]
         ],
-        'editor_script'   => 'blocks_js',
+        'editor_script'   => 'editor_js',
         'render_callback' => 'render_block_default'
     ] );
 
 }
 add_action('init', 'register_person_block');
+
+function render_accordion_item($attributes, $content) {
+
+    $visibility = $attributes['initially_open'] ? '' : ' hidden';
+
+    $arrow_down = '<svg xmlns="http://www.w3.org/2000/svg" class="accordion-item-title-arrow" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><path d="M5 6l5 5 5-5 2 1-7 7-7-7z" fill="white"/></svg>';
+
+    return '<div class="accordion-item">
+        <p class="accordion-item-title">' . $attributes['title'] . $arrow_down . '</p>
+        <div class="accordion-item-content' . $visibility .'">' . $content . '</div>
+    </div>';
+}
 
