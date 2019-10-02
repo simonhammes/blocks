@@ -1,9 +1,12 @@
 module.exports = {
     mode: 'development',
-    entry: './src/js/index.js',
+    entry: {
+        editor: './src/js/editor.js',
+        frontend: './src/js/frontend.js',
+    },
     output: {
         path: __dirname + '/build/',
-        filename: 'index.js'
+        filename: '[name].js'
     },
     module: {
         rules: [
@@ -33,7 +36,8 @@ module.exports = {
     },
     externals: {
         react: 'React',
-        'react-dom': 'ReactDOM'
+        'react-dom': 'ReactDOM',
+        //jquery: 'jQuery'
     },
     stats: 'minimal'
 };
