@@ -57,8 +57,10 @@ function register_template_for_pages() {
  */
 
 require 'src/accordion/accordion.php';
+require 'src/autocomplete/autocomplete.php';
 require 'src/box/box.php';
 require 'src/datepicker/datepicker.php';
+require 'src/media_upload/media_upload.php';
 require 'src/person/person.php';
 
 /**
