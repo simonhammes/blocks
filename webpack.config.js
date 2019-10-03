@@ -1,12 +1,12 @@
 module.exports = {
     mode: 'development',
     entry: {
-        editor: './src/block_editor/index.js',
-        frontend: './src/frontend/index.js',
+        backend: './src/backend.js',
+        frontend: './src/frontend.js',
     },
     output: {
         path: __dirname + '/build/',
-        filename: '[name].js'
+        filename: '[name].build.js'
     },
     module: {
         rules: [

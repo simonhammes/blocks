@@ -1,0 +1,8 @@
+.hidden {
+    display: none;
+}
+
+input[readonly].datepicker_formatted_date {
+    background-color: white;
+    cursor: pointer;
+}

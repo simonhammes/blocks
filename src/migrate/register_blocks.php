@@ -10,9 +10,6 @@ function register_blocks() {
 
     register_block_type( 'dev/core', [
         'attributes' => [
-            'datepicker' => [ 'type' => 'string', 'default' => '' ],
-            'range_control' => [ 'type' => 'number', 'default' => 2 ],
-            'toggle_control' => [ 'type' => 'boolean', 'default' => False ],
             'media_upload' => [ 'type' => 'string', 'default' => '' ]
         ],
         'editor_script'   => 'editor_js',

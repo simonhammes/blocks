@@ -6,5 +6,4 @@ $(function() {
         $(this).siblings('.accordion-item-content').slideToggle();
     });
 
-
 });

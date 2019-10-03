@@ -18,12 +18,12 @@ function render_accordion_item_block($attributes, $content) {
 
 function register_accordion_blocks_and_assets() {
 
-    wp_register_style('css_accordion', BLOCKS_PLUGIN_DIR . '/src/block_editor/accordion/accordion.css');
+    wp_register_style('css_accordion', BLOCKS_PLUGIN_DIR . '/src/accordion/accordion.css');
     wp_enqueue_style('css_accordion');
 
     register_block_type('dev/accordion', [
         'attributes' => [],
-        'editor_script' => 'js_block_editor',
+        'editor_script' => 'js_backend',
         'script' => 'js_frontend',
         'render_callback' => 'render_accordion_block'
     ]);
@@ -33,7 +33,7 @@ function register_accordion_blocks_and_assets() {
             'title' => [ 'type' => 'string', 'default' => 'Add a title' ],
             'initially_open' => [ 'type' => 'boolean', 'default' => FALSE ]
         ],
-        'editor_script' => 'js_block_editor',
+        'editor_script' => 'js_backend',
         'script' => 'js_frontend',
         'render_callback' => 'render_accordion_item_block'
     ]);

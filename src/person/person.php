@@ -19,7 +19,7 @@ function register_person_block() {
                 'default' => 'Max Mustermann'
             ]
         ],
-        'editor_script'   => 'js_block_editor',
+        'editor_script'   => 'js_backend',
         'render_callback' => 'render_person_block'
     ] );
 

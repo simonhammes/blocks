@@ -56,11 +56,12 @@ function register_template_for_pages() {
  * Blocks
  */
 
-require 'src/block_editor/accordion/accordion.php';
-require 'src/block_editor/box/box.php';
-require 'src/block_editor/person/person.php';
+require 'src/accordion/accordion.php';
+require 'src/box/box.php';
+require 'src/datepicker/datepicker.php';
+require 'src/person/person.php';
 
-/*
+/**
  * Actions & Filters
  */
 
@@ -79,8 +80,8 @@ function register_assets() {
         'wp-plugins'
     ];
 
-    wp_register_script( 'js_block_editor', BLOCKS_PLUGIN_DIR . '/build/editor.js', $dependencies );
-    wp_register_script( 'js_frontend', BLOCKS_PLUGIN_DIR . '/build/frontend.js', [ 'jquery' ] );
+    wp_register_script( 'js_backend', BLOCKS_PLUGIN_DIR . '/build/backend.build.js', $dependencies );
+    wp_register_script( 'js_frontend', BLOCKS_PLUGIN_DIR . '/build/frontend.build.js', [ 'jquery' ] );
 
 }
 

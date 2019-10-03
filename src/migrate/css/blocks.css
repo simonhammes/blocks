@@ -2,12 +2,3 @@ pre {
     white-space: pre-wrap;
     word-break: keep-all;
 }
-
-input[readonly].datepicker_formatted_date {
-    background-color: #FFFFFF;
-    cursor: pointer;
-}
-
-.trigger_notice, .list_of_blocks {
-    padding-left: 35px !important;
-}

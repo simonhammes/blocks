@@ -14,7 +14,7 @@ function register_box_block() {
                 'type' => 'string'
             ]
         ],
-        'editor_script'   => 'js_block_editor',
+        'editor_script'   => 'js_backend',
         'render_callback' => 'render_box_block'
     ] );
 
