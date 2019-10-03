@@ -1,5 +1,10 @@
+#### Blocks
+``` jsx
+wp.data.select('core/block-editor').getBlocks();
+```
+
 #### Notices
-``` js
+``` jsx
 wp.data.dispatch('core/notices').createNotice('info', 'Info notice');
 wp.data.dispatch('core/notices').createNotice('error', 'Error notice');
 wp.data.dispatch('core/notices').createNotice('warning', 'Warning notice');
