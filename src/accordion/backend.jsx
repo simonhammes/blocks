@@ -2,30 +2,12 @@ const { InnerBlocks, RichText } = wp.blockEditor;
 const { registerBlockType } = wp.blocks;
 const { ToggleControl } = wp.components;
 
+
 registerBlockType('dev/accordion', {
 
     title: 'Accordion',
     icon: 'list-view',
     category: 'blocks-by-simon-hammes',
-    /*
-    transforms: {
-        from: [
-            {
-                type: 'shortcode',
-                tag: 'person',
-                attributes: {
-                    id: {
-                        type: 'number',
-                        shortcode: attributes => parseInt(attributes.named.id)
-                    },
-                    name: {
-                        type: 'string',
-                        shortcode: attributes => attributes.named.name
-                    }
-                }
-            },
-        ]
-    }  */
     edit: () => <InnerBlocks template={ [ ['dev/accordion-item'] ] } allowedBlocks={ ['dev/accordion-item'] }/>,
     save: () => <InnerBlocks.Content/>
 
@@ -37,25 +19,6 @@ registerBlockType( 'dev/accordion-item', {
     icon: 'excerpt-view',
     category: 'blocks-by-simon-hammes',
     parent: ['dev/accordion'],
-    /*
-    transforms: {
-        from: [
-            {
-                type: 'shortcode',
-                tag: 'person',
-                attributes: {
-                    id: {
-                        type: 'number',
-                        shortcode: attributes => parseInt(attributes.named.id)
-                    },
-                    name: {
-                        type: 'string',
-                        shortcode: attributes => attributes.named.name
-                    }
-                }
-            },
-        ]
-    }  */
     edit: props => {
 
         const ALLOWED_BLOCKS = ['core/paragraph', 'core/heading', 'core/list', 'core/image', 'core/spacer'];

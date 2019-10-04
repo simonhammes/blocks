@@ -71,6 +71,7 @@ add_action('init', 'register_assets');
 function register_assets() {
 
     $dependencies = [
+        'wp-autop',
         'wp-blocks',
         'wp-components',
         'wp-compose',
