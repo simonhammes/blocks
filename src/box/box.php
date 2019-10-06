@@ -11,7 +11,8 @@ function register_box_block() {
     register_block_type( 'dev/box', [
         'attributes' => [
             'color' => [
-                'type' => 'string'
+                'type' => 'string',
+                'default' => 'black'
             ]
         ],
         'editor_script'   => 'js_backend',
