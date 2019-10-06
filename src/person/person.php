@@ -1,7 +1,7 @@
 <?php
 
 function render_person_block($attributes) {
-    return '<div style="border: 3px solid #ACACAC; padding: 20px;">' .
+    return '<div style="padding: 20px;">' .
         '<p>ID: ' . $attributes['id'] . '<br>' . 'Name: ' . $attributes['name'] . '</p>' .
     '</div>';
 }
