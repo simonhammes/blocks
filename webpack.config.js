@@ -1,4 +1,5 @@
 module.exports = {
+    devtool: 'source-map',
     mode: 'development',
     entry: {
         backend: './src/backend.js',
