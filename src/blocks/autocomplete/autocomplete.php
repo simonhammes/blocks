@@ -16,7 +16,7 @@ function register_autocomplete_block_and_assets() {
         'render_callback' => 'render_autocomplete_block'
     ] );
 
-    wp_register_style('css_autocomplete', BLOCKS_PLUGIN_DIR . '/src/autocomplete/autocomplete.css');
+    wp_register_style('css_autocomplete', 'https://cdn.jsdelivr.net/npm/accessible-autocomplete@2.0.1/dist/accessible-autocomplete.min.css');
     wp_enqueue_style('css_autocomplete');
 
 }

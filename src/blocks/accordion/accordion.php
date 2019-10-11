@@ -18,7 +18,7 @@ function render_accordion_item_block($attributes, $content) {
 
 function register_accordion_blocks_and_assets() {
 
-    wp_register_style('css_accordion', BLOCKS_PLUGIN_DIR . '/src/accordion/accordion.css');
+    wp_register_style('css_accordion', plugins_url('accordion.css', __FILE__));
     wp_enqueue_style('css_accordion');
 
     register_block_type('dev/accordion', [

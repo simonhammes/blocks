@@ -2,7 +2,7 @@
     display: none;
 }
 
-input[readonly].datepicker_formatted_date {
+input[readonly].datepicker_formattedDate {
     background-color: white;
     cursor: pointer;
 }

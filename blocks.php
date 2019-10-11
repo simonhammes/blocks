@@ -52,22 +52,21 @@ function register_template_for_pages() {
 }
 //add_action('init', 'register_template_for_pages');
 
-/**
- * Blocks
- */
+/* Blocks */
 
-require 'src/accordion/accordion.php';
-require 'src/autocomplete/autocomplete.php';
-require 'src/box/box.php';
-require 'src/datepicker/datepicker.php';
-require 'src/media_upload/media_upload.php';
-require 'src/person/person.php';
+$blocks = ['accordion', 'autocomplete', 'box', 'datepicker', 'media_upload', 'person'];
+
+//foreach ($blocks as $block) require 'src/blocks/' . $block . '/' . $block . '.php';
+
+require 'src/blocks/accordion/accordion.php';
+require 'src/blocks/autocomplete/autocomplete.php';
 
 /**
  * Actions & Filters
  */
 
 add_action('init', 'register_assets');
+
 function register_assets() {
 
     $dependencies = [

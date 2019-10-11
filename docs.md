@@ -1,3 +1,10 @@
+## Development
+
+#### ESLint
+`wp-scripts lint-js`
+
+## Snippets
+
 #### Blocks
 ``` jsx
 wp.data.select('core/block-editor').getBlocks();

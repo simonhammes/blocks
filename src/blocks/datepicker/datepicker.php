@@ -17,8 +17,9 @@ function register_datepicker_block_and_assets() {
         'render_callback' => 'render_datepicker_block'
     ] );
 
-    wp_register_style('css_datepicker', BLOCKS_PLUGIN_DIR . '/src/datepicker/datepicker.css');
+    wp_register_style('css_datepicker', BLOCKS_PLUGIN_DIR . '/src/css/datepicker.css');
     wp_enqueue_style('css_datepicker');
 
 }
+
 add_action('init', 'register_datepicker_block_and_assets');
