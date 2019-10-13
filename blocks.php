@@ -52,18 +52,15 @@ function register_template_for_pages() {
 }
 //add_action('init', 'register_template_for_pages');
 
+
 /* Blocks */
 
 $blocks = ['accordion', 'autocomplete', 'box', 'datepicker', 'media_upload', 'person'];
 
-//foreach ($blocks as $block) require 'src/blocks/' . $block . '/' . $block . '.php';
+foreach ($blocks as $block) require 'src/blocks/' . $block . '/' . $block . '.php';
 
-require 'src/blocks/accordion/accordion.php';
-require 'src/blocks/autocomplete/autocomplete.php';
 
-/**
- * Actions & Filters
- */
+/* Actions & Filters */
 
 add_action('init', 'register_assets');
 
