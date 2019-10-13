@@ -1,7 +1,10 @@
 ## Development
 
+#### Webpack
+`npm run watch`
+
 #### ESLint
-`wp-scripts lint-js`
+`npm run eslint`
 
 ## Snippets
 
