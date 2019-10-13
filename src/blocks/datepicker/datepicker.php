@@ -1,6 +1,6 @@
 <?php
 
-function render_datepicker_block($attributes, $content) {
+function render_datepicker_block($attributes) {
     return 'Date: ' . $attributes['date'];
 }
 
@@ -10,14 +10,14 @@ function register_datepicker_block_and_assets() {
         'attributes' => [
             'date' => [
                 'type' => 'string',
-                'default' => ''
+                'default' => '',
             ]
         ],
         'editor_script'   => 'js_backend',
         'render_callback' => 'render_datepicker_block'
     ] );
 
-    wp_register_style('css_datepicker', BLOCKS_PLUGIN_DIR . '/src/css/datepicker.css');
+    wp_register_style('css_datepicker', plugins_url('datepicker.css', __FILE__));
     wp_enqueue_style('css_datepicker');
 
 }

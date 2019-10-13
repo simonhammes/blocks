@@ -12,7 +12,10 @@ registerBlockType( 'dev/datepicker', {
 
 	edit: withState( { is_visible: false } )( props => {
 
-		const date = props.attributes.date !== '' ? props.attributes.date : new Date();
+		// Set the current date to today and update the block's attributes
+		const date = props.attributes.date === '' ? new Date() : props.attributes.date;
+		props.setAttributes( { date } );
+
 		const dateFormattingOptions = {
 			day: 'numeric',
 			month: 'long',
