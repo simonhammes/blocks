@@ -3,7 +3,6 @@
 // Plugin Name: Blocks
 // Author: Simon Hammes
 
-define('BLOCKS_PLUGIN_DIR', '/wp-content/plugins/blocks');
 
 function register_template_for_pages() {
     $page = get_post_type_object('page');
@@ -79,8 +78,15 @@ function register_assets() {
         'wp-plugins'
     ];
 
-    wp_register_script( 'js_backend', BLOCKS_PLUGIN_DIR . '/build/backend.build.js', $dependencies );
-    wp_register_script( 'js_frontend', BLOCKS_PLUGIN_DIR . '/build/frontend.build.js', [ 'jquery' ] );
+    wp_register_script(
+        'js_backend',
+        plugins_url('build/backend.build.js', __FILE__),
+        $dependencies
+    );
+
+    wp_register_script(
+        'js_frontend',
+        plugins_url('build/frontend.build.js', __FILE__), [ 'jquery' ]);
 
 }
 
