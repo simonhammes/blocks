@@ -30,6 +30,7 @@
           "max": 2
         }
       ],
+      "no-unreachable": "warn",
       "no-unused-vars": "warn",
       "padded-blocks": "off"
     }
