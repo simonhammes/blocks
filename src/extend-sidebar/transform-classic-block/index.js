@@ -1,16 +1,22 @@
 /* WordPress dependencies */
-const { removep } = wp.autop;
+import { removep } from '@wordpress/autop';
+import { getFreeformContentHandlerName } from '@wordpress/blocks';
+import { dispatch, select } from '@wordpress/data';
 
 /* Internal dependencies */
 import { grammar } from './grammar';
 import peg from './peg';
 
 
-export const transformClassicBlock = () => {
-	const firstBlockOnPage = wp.data.select( 'core/block-editor' ).getBlocks()[ 0 ];
+const createNotice = ( type, text ) => dispatch( 'core/notices' ).createNotice( type, text );
 
-	if ( firstBlockOnPage.name !== wp.blocks.getFreeformContentHandlerName() ) {
-		throw new Error( 'No classic block at index 0 found' );
+export const transformClassicBlock = () => {
+
+	const firstBlockOnPage = select( 'core/block-editor' ).getBlocks()[ 0 ];
+	const freeformBlockName = getFreeformContentHandlerName();
+
+	if ( typeof firstBlockOnPage === 'undefined' || firstBlockOnPage.name !== freeformBlockName ) {
+		return createNotice( 'error', 'Error: The classic block has to be positioned at index 0!' );
 	}
 
 	const content = removep( firstBlockOnPage.originalContent );
