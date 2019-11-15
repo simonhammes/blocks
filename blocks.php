@@ -1,6 +1,6 @@
 <?php
 
-// Plugin Name: Blocks
+// Plugin Name: SimonHammes\Blocks
 // Author: Simon Hammes
 
 
