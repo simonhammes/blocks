@@ -54,9 +54,19 @@ function register_template_for_pages() {
 
 /* Blocks */
 
-$blocks = ['accordion', 'autocomplete', 'box', 'datepicker', 'media_upload', 'person'];
+$blocks = [
+    'accordion',
+    'autocomplete',
+    'box',
+    'datepicker',
+    'media_upload',
+    'person',
+    'tabs'
+];
 
-foreach ($blocks as $block) require 'src/blocks/' . $block . '/' . $block . '.php';
+foreach ( $blocks as $block ) {
+    require 'src/blocks/' . $block . '/' . $block . '.php';
+}
 
 
 /* Actions & Filters */
